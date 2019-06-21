@@ -219,7 +219,6 @@ SoftwareSerial *fonaSerial = &fonaSS;
 
 Adafruit_FONA fona = Adafruit_FONA(FONA_RST);
 
-//int x = 0;
 int buttonstate = 0;
 unsigned int in_frequency = 1000;
 unsigned int en_frequency = 2000;
