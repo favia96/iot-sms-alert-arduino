@@ -29,13 +29,14 @@ char *names[]={"Federico","Cesar","Marvin"}; //users' names
 
 char *numbers[]={"+393465759669","+393515059863","+4917657988048"}; //users' numbers
 
+//emergency numbers (cols) of each user (rows)
 char *emergency_numbers[3][3]={
-    {"+393515059863", "+393355245367","+393272357026"},
+    {"+393515059863","+393465759669"},
     {"+393465759669","+4917657988048"},
     {"144","1313","1321"}
 };
 
-void flushSerial()
+void flushSerial() //read serial if available
 {
   while (Serial.available())
   {
@@ -43,7 +44,7 @@ void flushSerial()
   }
 }
 
-void send_sms_user(int _i)
+void send_sms_user(int _i) //send sms to user "Are you ok?"
 {
   delay(2500);
   tone(7, in_frequency, duration);
@@ -54,16 +55,16 @@ void send_sms_user(int _i)
   //Serial.write(26);
 
   flushSerial();
-  fona.sendSMS(numbers[_i], mex);
+  fona.sendSMS(numbers[_i], mex); //send sms
   delay(2500);
   tone(7, en_frequency, duration);
 }
 
-void get_gps()
+void get_gps() //get gps coordinates until it finds and store them
 {
   boolean gps_success = fona.getGPS(&latitude, &longitude, &speed_kph, &heading, &altitude);
 
-  if (gps_success)
+  if (gps_success) //only when finds coordinates
   {
       Serial.print("GPS lat: ");
       Serial.println(latitude, 6);
@@ -78,14 +79,14 @@ void get_gps()
   }
   else
   {
-      Serial.println("Waiting for FONA GPS 3D fix...");
+      Serial.println("Waiting for FONA GPS 3D fix..."); //waiting for 3d fix
   }
 }
 
-void send_sms_emergency(int _i)
+void send_sms_emergency(int _i) //send coordinates saved to emergency list of the user
 {
   int h;
-  for(h = 0; h < 3; h++)
+  for(h = 0; h < 2; h++)
   {
       tone(7, in_frequency_em, duration);
 
