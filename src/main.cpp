@@ -98,7 +98,7 @@ void send_sms_emergency(int _i)
       gps_string.toCharArray(gps_string_tosend, 50);
       //Serial.print("Char: ");
       //Serial.println(gps_string_tosend);
-      fona.sendSMS(emergency_numbers[_i][h], gps_string_tosend);
+      fona.sendSMS(emergency_numbers[_i][h], gps_string_tosend); //send sms
 
       tone(7, en_frequency_em, duration);
       delay(7000);
