@@ -18,7 +18,7 @@ unsigned int in_frequency_em = 1500;
 unsigned int en_frequency_em = 2500;
 unsigned long duration = 1500;
 char mex[30];
-String gps_string_partial = " has crashed! Coord: ";
+String gps_string_partial = " has crashed! https://www.google.com/maps?q=";
 String gps_string;
 char gps_string_tosend[50];
 float latitude, longitude, speed_kph, heading, altitude;
@@ -111,13 +111,13 @@ void setup()
   pinMode(7, OUTPUT); //buzzer
   pinMode(8, INPUT); //button
 
-  while (!Serial);
+  //while (!Serial);
 
-  Serial.begin(115200);
-  Serial.println(F("FONA basic test"));
-  Serial.println(F("Initializing....(May take 3 seconds)"));
+  Serial.begin(9600);
+  //Serial.println(F("FONA basic test"));
+  //Serial.println(F("Initializing....(May take 3 seconds)"));
 
-  fonaSerial->begin(4800);
+  fonaSerial->begin(9600);
   if (! fona.begin(*fonaSerial)) //start fona if it's found
   {
     Serial.println(F("Couldn't find FONA"));
