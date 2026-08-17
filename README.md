@@ -1,4 +1,4 @@
-# send_sms — "Are you OK?" SMS Safety Alert
+# IoT Send SMS Alert System: "Are you OK?" SMS Safety Alert
 
 An Arduino sketch implementing a button-triggered safety check: press a
 button to send a check-in SMS ("Hey \<name\>, are you OK?") to a user; if
@@ -57,3 +57,7 @@ static char *emergency_numbers[3][3] = { ... };
   the setup steps in `sms_backend_sim908_at.cpp` (S1/S2 switch positions).
 
 Both environments share: buzzer on D7, button on D8.
+
+## Author
+
+**Federico Favia** — April 2019
